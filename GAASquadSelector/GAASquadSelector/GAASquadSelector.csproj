@@ -193,11 +193,22 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PlayersController.cs" />
+    <Compile Include="Controllers\SelectorsController.cs" />
+    <Compile Include="Controllers\SquadsController.cs" />
     <Compile Include="DAL\PlayerInitializer.cs" />
     <Compile Include="DAL\SquadContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201802061603314_InitialCreate.cs" />
+    <Compile Include="Migrations\201802061603314_InitialCreate.Designer.cs">
+      <DependentUpon>201802061603314_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802071254569_InitialCreate1.cs" />
+    <Compile Include="Migrations\201802071254569_InitialCreate1.Designer.cs">
+      <DependentUpon>201802071254569_InitialCreate1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -269,6 +280,16 @@
     <Content Include="Views\Players\Details.cshtml" />
     <Content Include="Views\Players\Edit.cshtml" />
     <Content Include="Views\Players\Index.cshtml" />
+    <Content Include="Views\Squads\Create.cshtml" />
+    <Content Include="Views\Squads\Delete.cshtml" />
+    <Content Include="Views\Squads\Details.cshtml" />
+    <Content Include="Views\Squads\Edit.cshtml" />
+    <Content Include="Views\Squads\Index.cshtml" />
+    <Content Include="Views\Selectors\Create.cshtml" />
+    <Content Include="Views\Selectors\Delete.cshtml" />
+    <Content Include="Views\Selectors\Details.cshtml" />
+    <Content Include="Views\Selectors\Edit.cshtml" />
+    <Content Include="Views\Selectors\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -285,6 +306,14 @@
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201802061603314_InitialCreate.resx">
+      <DependentUpon>201802061603314_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802071254569_InitialCreate1.resx">
+      <DependentUpon>201802071254569_InitialCreate1.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

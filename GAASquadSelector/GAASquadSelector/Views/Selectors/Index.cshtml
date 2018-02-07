@@ -1,0 +1,45 @@
+﻿@model IEnumerable<GAASquadSelector.Models.Selector>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Players.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Squad.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Position)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Players.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Squad.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Position)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.SelectionID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.SelectionID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.SelectionID })
+        </td>
+    </tr>
+}
+
+</table>

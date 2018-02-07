@@ -16,9 +16,30 @@ namespace GAASquadSelector.Controllers
         private SquadContext db = new SquadContext();
 
         // GET: Players
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder)
         {
-            return View(db.Players.ToList());
+            ViewBag.FirstNameSortParm = String.IsNullOrEmpty(sortOrder) ? "first_name_desc" : "";
+            ViewBag.LastNameSortParm = String.IsNullOrEmpty(sortOrder) ? "last_name_desc" : "";
+            ViewBag.PositionSortParm = String.IsNullOrEmpty(sortOrder) ? "Position"  : "Position";
+            var players = from s in db.Players
+                           select s;
+            switch (sortOrder)
+            {
+                case "first_name_desc":
+                    players = players.OrderByDescending(p => p.FirstName);
+                    break;
+                case "last_name_desc":
+                    players = players.OrderByDescending(p => p.LastName);
+                    break;
+                case "Position":
+                    players = players.OrderBy(p => p.Position);
+                    break;
+                default:
+                    players = players.OrderBy(p => p.FirstName);
+                    break;
+            }
+
+            return View(players.ToList());
         }
 
         // GET: Players/Details/5
