@@ -195,6 +195,7 @@
     <Compile Include="Controllers\PlayersController.cs" />
     <Compile Include="Controllers\SelectorsController.cs" />
     <Compile Include="Controllers\SquadsController.cs" />
+    <Compile Include="Controllers\SquadSelectorController.cs" />
     <Compile Include="DAL\PlayerInitializer.cs" />
     <Compile Include="DAL\SquadContext.cs" />
     <Compile Include="Global.asax.cs">
@@ -290,6 +291,8 @@
     <Content Include="Views\Selectors\Details.cshtml" />
     <Content Include="Views\Selectors\Edit.cshtml" />
     <Content Include="Views\Selectors\Index.cshtml" />
+    <Content Include="Views\SquadSelector\View.cshtml" />
+    <Content Include="Views\SquadSelector\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

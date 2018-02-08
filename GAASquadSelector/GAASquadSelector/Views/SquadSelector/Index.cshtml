@@ -1,0 +1,39 @@
+﻿@model IEnumerable<GAASquadSelector.Models.Player>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Squad Selector</h2>
+
+<table class="table" class="col-md-4">
+    <tr>
+        <th>
+            @Html.ActionLink("First Name", "Index", new { sortOrder = ViewBag.FirstNameSortParm })
+        </th>
+        <th>
+            @Html.ActionLink("Last Name", "Index", new { sortOrder = ViewBag.LastNameSortParm })
+        </th>
+        <th>
+            @Html.ActionLink("Position", "Index", new { sortOrder = ViewBag.PositionSortParm })
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in ViewBag.data)
+    {
+        <tr>
+            <td>
+                @item.FirstName
+            </td>
+            <td>
+                @item.LastName
+            </td>
+            <td>
+                @item.Position
+            </td>
+
+        </tr>
+    }
+
+</table>
