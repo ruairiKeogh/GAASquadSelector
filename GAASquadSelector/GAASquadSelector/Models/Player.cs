@@ -16,6 +16,7 @@ namespace GAASquadSelector.Models
         public string LastName { get; set; }
         //[Required]
         public string Position { get; set; }
+        public string UserID { get; set; }
 
         public virtual ICollection<Selector> Selections { get; set; }
     }

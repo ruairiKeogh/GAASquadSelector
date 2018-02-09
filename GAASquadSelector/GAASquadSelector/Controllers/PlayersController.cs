@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using GAASquadSelector.DAL;
 using GAASquadSelector.Models;
+using Microsoft.AspNet.Identity;
 
 namespace GAASquadSelector.Controllers
 {
@@ -16,13 +17,14 @@ namespace GAASquadSelector.Controllers
         private SquadContext db = new SquadContext();
 
         // GET: Players
-        public ActionResult Index(string sortOrder)
+        [Authorize]
+        public ActionResult Index(string sortOrder, string userID)
         {
             ViewBag.FirstNameSortParm = String.IsNullOrEmpty(sortOrder) ? "first_name_desc" : "";
             ViewBag.LastNameSortParm = String.IsNullOrEmpty(sortOrder) ? "last_name_desc" : "";
             ViewBag.PositionSortParm = String.IsNullOrEmpty(sortOrder) ? "Position"  : "Position";
             var players = from s in db.Players
-                           select s;
+                           select s ;
             switch (sortOrder)
             {
                 case "first_name_desc":
@@ -32,14 +34,16 @@ namespace GAASquadSelector.Controllers
                     players = players.OrderByDescending(p => p.LastName);
                     break;
                 case "Position":
-                    players = players.OrderBy(p => p.Position);
+                    players = players.OrderBy(p => p.Position == "Goalkeeper" ? 1:
+                                                    p.Position == "Defender" ? 2: 
+                                                    p.Position == "Midfielder" ? 3:4);
                     break;
                 default:
                     players = players.OrderBy(p => p.FirstName);
                     break;
             }
 
-            return View(players.ToList());
+            return View(players.Where(u=>u.UserID == userID).ToList());
         }
 
         // GET: Players/Details/5
@@ -72,6 +76,7 @@ namespace GAASquadSelector.Controllers
         {
             if (ModelState.IsValid)
             {
+                player.UserID = User.Identity.GetUserId();
                 db.Players.Add(player);
                 db.SaveChanges();
                 return RedirectToAction("Index");

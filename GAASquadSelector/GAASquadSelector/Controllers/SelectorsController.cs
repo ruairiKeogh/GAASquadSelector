@@ -16,6 +16,7 @@ namespace GAASquadSelector.Controllers
         private SquadContext db = new SquadContext();
 
         // GET: Selectors
+        [Authorize]
         public ActionResult Index()
         {
             var selections = db.Selections.Include(s => s.Players).Include(s => s.Squad);

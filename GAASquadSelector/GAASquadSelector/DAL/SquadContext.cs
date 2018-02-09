@@ -5,6 +5,8 @@ using System.Web;
 using GAASquadSelector.Models;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace GAASquadSelector.DAL
 {
