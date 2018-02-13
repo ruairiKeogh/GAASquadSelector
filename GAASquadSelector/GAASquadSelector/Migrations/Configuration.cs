@@ -5,7 +5,7 @@ namespace GAASquadSelector.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<GAASquadSelector.DAL.SquadContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<DAL.SquadContext>
     {
         public Configuration()
         {
@@ -14,7 +14,7 @@ namespace GAASquadSelector.Migrations
             ContextKey = "GAASquadSelector.DAL.SquadContext";
         }
 
-        protected override void Seed(GAASquadSelector.DAL.SquadContext context)
+        protected override void Seed(DAL.SquadContext context)
         {
             
         }

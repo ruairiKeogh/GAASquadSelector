@@ -26,11 +26,19 @@ namespace GAASquadSelector.Models
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
+            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<ApplicationDbContext>());
         }
+
 
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
+        }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<ApplicationUser>().HasMany(p => p.players).WithRequired(u => u.User).WillCascadeOnDelete(false);
+            base.OnModelCreating(modelBuilder);
         }
     }
 }
