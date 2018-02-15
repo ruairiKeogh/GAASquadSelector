@@ -37,7 +37,6 @@ namespace GAASquadSelector.Models
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<ApplicationUser>().HasMany(p => p.players).WithRequired(u => u.User).WillCascadeOnDelete(false);
             base.OnModelCreating(modelBuilder);
         }
     }

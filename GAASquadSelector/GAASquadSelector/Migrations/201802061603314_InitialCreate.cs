@@ -17,8 +17,7 @@ namespace GAASquadSelector.Migrations
                         Position = c.String(),
                         UserId = c.String()
                     })
-                .PrimaryKey(t => t.ID)
-                .ForeignKey("dbo.AspNetUsers", t=> t.UserId, cascadeDelete: true);
+                .PrimaryKey(t => t.ID);
 
             CreateTable(
                 "dbo.Squad",

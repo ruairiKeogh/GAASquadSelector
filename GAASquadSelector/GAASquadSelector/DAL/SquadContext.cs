@@ -25,9 +25,6 @@ namespace GAASquadSelector.DAL
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Player>().HasRequired(p=>p.User).WithMany(p=>p.players).HasForeignKey(d=>d.UserID).WillCascadeOnDelete(false);
-
-            //modelBuilder.Entity<Course>().HasRequired(t => t.Department).WithMany(t => t.Courses).HasForeignKey(d => d.DepartmentID).WillCascadeOnDelete(false);
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
     }

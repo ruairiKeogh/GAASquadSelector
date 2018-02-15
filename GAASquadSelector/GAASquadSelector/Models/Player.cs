@@ -18,8 +18,6 @@ namespace GAASquadSelector.Models
         public string Position { get; set; }
         public string UserID { get; set; }
 
-        [ForeignKey("UserID")]
-        public ApplicationUser User { get; set; }
         public virtual ICollection<Selector> Selections { get; set; }
     }
 }
