@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace GAASquadSelector.Models
 {
@@ -10,16 +11,16 @@ namespace GAASquadSelector.Models
 
     public class Fixture
     {
-            
-        int ID { get; set; }
-        DateTime? Date { get; set; }
-        string HomeTeam { get; set; }
-        string AwayTeam { get; set; }
-        Score HomeScore { get; set; }
-        Score AwayScore { get; set; }
-        string League { get; set; }
-        string Referee { get; set; }
-        string Venue { get; set; }
+        [Key]
+        public int ID { get; set; }
+        public DateTime? Date { get; set; }
+        public string HomeTeam { get; set; }
+        public string AwayTeam { get; set; }
+        public Score HomeScore { get; set; }
+        public Score AwayScore { get; set; }
+        public string League { get; set; }
+        public string Referee { get; set; }
+        public string Venue { get; set; }
 
     }
 }

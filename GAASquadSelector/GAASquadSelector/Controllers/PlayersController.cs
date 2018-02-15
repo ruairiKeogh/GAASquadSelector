@@ -18,7 +18,7 @@ namespace GAASquadSelector.Controllers
 
         // GET: Players
         [Authorize]
-        public ActionResult Index(string sortOrder, string userID)
+        public ActionResult Index(string sortOrder)
         {
             ViewBag.FirstNameSortParm = String.IsNullOrEmpty(sortOrder) ? "first_name_desc" : "";
             ViewBag.LastNameSortParm = String.IsNullOrEmpty(sortOrder) ? "last_name_desc" : "";
@@ -43,7 +43,9 @@ namespace GAASquadSelector.Controllers
                     break;
             }
 
-            return View(players.Where(u=>u.UserID == userID).ToList());
+            string userId = User.Identity.GetUserId();
+
+            return View(players.Where(u=>u.UserID == userId).ToList());
         }
 
         // GET: Players/Details/5
@@ -109,6 +111,7 @@ namespace GAASquadSelector.Controllers
         {
             if (ModelState.IsValid)
             {
+                player.UserID = User.Identity.GetUserId();
                 db.Entry(player).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

@@ -21,7 +21,8 @@ namespace GAASquadSelector.DAL
         public DbSet<Player> Players { get; set; }
         public DbSet<Selector> Selections { get; set; }
         public DbSet<Squad> Squads { get; set; }
-
+  
+        public DbSet<Fixture> Fixtures { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

@@ -1,4 +1,5 @@
-﻿@model IEnumerable<GAASquadSelector.Models.Player>
+﻿
+@model IEnumerable<GAASquadSelector.Models.SquadSelector>
 
 @{
     ViewBag.Title = "Index";
@@ -6,7 +7,7 @@
 
 <h2>Squad Selector</h2>
 
-<table class="table" class="col-md-4">
+<table class="col-md-4">
     <tr>
         <th>
             @Html.ActionLink("First Name", "Index", new { sortOrder = ViewBag.FirstNameSortParm })
@@ -37,3 +38,16 @@
     }
 
 </table>
+
+
+@{
+    ViewBag.Title = "RetrievePositions";
+}
+
+<table>
+    @Html.EnumDropDownListFor(
+              x => x.Positions,
+              "Select My Type",
+              new { @class = "form-control" })
+</table>
+
