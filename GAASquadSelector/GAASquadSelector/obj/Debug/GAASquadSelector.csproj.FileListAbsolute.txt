@@ -143,9 +143,12 @@ H:\Desktop\GAApp\GAASquadSelector\GAASquadSelector\obj\Debug\GAASquadSelector.pd
 \\COMPHOME\homedir$\X00121581\Desktop\GAApp\GAASquadSelector\GAASquadSelector\obj\Debug\GAASquadSelector.Migrations.InitialCreate.resources
 \\COMPHOME\homedir$\X00121581\Desktop\GAApp\GAASquadSelector\GAASquadSelector\obj\Debug\GAASquadSelector.csproj.GenerateResource.Cache
 H:\Desktop\GAApp\GAASquadSelector\GAASquadSelector\obj\Debug\GAASquadSelector.Migrations.InitialCreate.resources
-H:\Desktop\GAApp\GAASquadSelector\GAASquadSelector\obj\Debug\GAASquadSelector.Migrations.InitialCreate1.resources
 H:\Desktop\GAApp\GAASquadSelector\GAASquadSelector\obj\Debug\GAASquadSelector.csproj.GenerateResource.Cache
 \\COMPHOME\homedir$\X00121581\Desktop\GAApp\GAASquadSelector\GAASquadSelector\bin\HtmlAgilityPack.dll
 \\COMPHOME\homedir$\X00121581\Desktop\GAApp\GAASquadSelector\GAASquadSelector\bin\HtmlAgilityPack.pdb
 \\COMPHOME\homedir$\X00121581\Desktop\GAApp\GAASquadSelector\GAASquadSelector\bin\HtmlAgilityPack.xml
 \\COMPHOME\homedir$\X00121581\Desktop\GAApp\GAASquadSelector\GAASquadSelector\obj\Debug\GAASquadSelector.Migrations.Initial.resources
+H:\Desktop\GAApp\GAASquadSelector\GAASquadSelector\bin\HtmlAgilityPack.dll
+H:\Desktop\GAApp\GAASquadSelector\GAASquadSelector\bin\HtmlAgilityPack.pdb
+H:\Desktop\GAApp\GAASquadSelector\GAASquadSelector\bin\HtmlAgilityPack.xml
+H:\Desktop\GAApp\GAASquadSelector\GAASquadSelector\obj\Debug\GAASquadSelector.Migrations.Initial.resources

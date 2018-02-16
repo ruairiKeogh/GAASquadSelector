@@ -18,47 +18,75 @@ namespace GAASquadSelector.Controllers
         private SquadContext db = new SquadContext();
 
         // GET: Fixtures
-        public async Task<ActionResult> IndexAsync()
+        public async Task<ActionResult> Index()
         {
+            List<string> leagues = new List<string>();
+            List<string> homeTeams = new List<string>();
+            List<string> awayTeams = new List<string>();
+            List<string> venues = new List<string>();
+            List<string> referees = new List<string>();
+
+            List<string> times = new List<string>();
+            List<string> dates = new List<string>();
+            List<DateTime> dateTimes = new List<DateTime>();
+
+
             HtmlWeb web = new HtmlWeb();
             var doc = await Task.Factory.StartNew(() => web.Load("https://www.dublingaa.ie/fixtures"));
-            var leagueNodes = doc.DocumentNode.SelectNodes("//*[@id=\"listing_wrapper\"]/div//a");//*[@id="listing_wrapper"]/div[2]
-            var leagueTexts = leagueNodes.Select(node => node.InnerText);
 
-            //for (int i =0; i<leagueNodes.Count();i++)
-            //{
-            //    if (i % 2 != 0) {
-            //       var leagueTexts += leagueNodes.Select(i);
-            //    }
-            //}
-            
+            foreach (HtmlNode node in doc.DocumentNode.SelectNodes("//*[@id=\"listing_wrapper\"]/div//a"))
+            {
+                leagues.Add(node.ChildNodes[0].InnerHtml);
+            }
 
-            var dateNodes = doc.DocumentNode.SelectNodes("//*[@id=\"listing_wrapper\"]/div//a/div[1]");
-            var dateTexts = dateNodes.Select(node => node.InnerText);
-            var timeNodes = doc.DocumentNode.SelectNodes("//*[@id=\"listing_wrapper\"]/div//a/div[2]");
-            var timeTexts = timeNodes.Select(node => node.InnerText);
+            foreach (HtmlNode node in doc.DocumentNode.SelectNodes("//*[@id=\"listing_wrapper\"]/div//a/div[4]"))
+            {
+                homeTeams.Add(node.ChildNodes[0].InnerHtml);
+            }
 
-            var venueNodes = doc.DocumentNode.SelectNodes("//*[@id=\"listing_wrapper\"]/div//a/div[3]");
-            var venueTexts = venueNodes.Select(node => node.InnerText);
+            foreach (HtmlNode node in doc.DocumentNode.SelectNodes("//*[@id=\"listing_wrapper\"]/div//a/div[6]"))
+            {
+                awayTeams.Add(node.ChildNodes[0].InnerHtml);
+            }
 
-            var homeTeamNodes = doc.DocumentNode.SelectNodes("//*[@id=\"listing_wrapper\"]/div//a/div[4]");
-            var homeTeamTexts = homeTeamNodes.Select(node => node.InnerText);
+            foreach (HtmlNode node in doc.DocumentNode.SelectNodes("//*[@id=\"listing_wrapper\"]/div//a/div[3]"))
+            {
+                venues.Add(node.ChildNodes[0].InnerHtml);
+            }
 
-            var awayTeamNodes = doc.DocumentNode.SelectNodes("//*[@id=\"listing_wrapper\"]/div//a/div[6]");
-            var awayTeamTexts = awayTeamNodes.Select(node => node.InnerText);
+            foreach (HtmlNode node in doc.DocumentNode.SelectNodes("//*[@id=\"listing_wrapper\"]/div//a/div[7]"))
+            {
+                referees.Add(node.ChildNodes[0].InnerHtml);
+            }
 
-            var refNodes = doc.DocumentNode.SelectNodes("//*[@id=\"listing_wrapper\"]/div//a/div[7]");
-            var refTexts = refNodes.Select(node => node.InnerText);
+            foreach (HtmlNode node in doc.DocumentNode.SelectNodes("//*[@id=\"listing_wrapper\"]/div//a/div[1]"))
+            {
+                dates.Add(node.ChildNodes[0].InnerHtml);
+            }
+            foreach (HtmlNode node in doc.DocumentNode.SelectNodes("//*[@id=\"listing_wrapper\"]/div//a/div[2]"))
+            {
+                times.Add(node.ChildNodes[0].InnerHtml);
+            }
+
+            for (int i = 0;i < times.Count; i++)
+            {
+                DateTime date = Convert.ToDateTime(dates[i]);
+                DateTime time = Convert.ToDateTime(times[i]);
+
+                DateTime dateTime = date.Date + time.TimeOfDay; 
+                dateTimes.Add(dateTime);
+            }
 
 
-            for (int i = 0;i < leagueTexts.Count(); i++)
+            for (int i = 0;i < homeTeams.Count; i++)
             {
                 Fixture fixture = new Fixture();
-                fixture.HomeTeam = homeTeamTexts.ElementAt(i);
-                fixture.AwayTeam = awayTeamTexts.ElementAt(i);
-                fixture.Venue = venueTexts.ElementAt(i);
-                fixture.Referee = refTexts.ElementAt(i);
-                fixture.League = leagueTexts.ElementAt(i);
+                fixture.HomeTeam = homeTeams[i];
+                fixture.AwayTeam = awayTeams[i];
+                fixture.Venue = venues[i];
+                fixture.Referee = referees[i];
+                fixture.League = leagues[i];
+                fixture.Date = dateTimes[i];
                 db.Fixtures.Add(fixture);
                 db.SaveChanges();
             }
