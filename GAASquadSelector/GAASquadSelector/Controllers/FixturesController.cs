@@ -36,8 +36,23 @@ namespace GAASquadSelector.Controllers
 
             foreach (HtmlNode node in doc.DocumentNode.SelectNodes("//*[@id=\"listing_wrapper\"]/div//a"))
             {
-                leagues.Add(node.ChildNodes[0].InnerHtml);
+                if (node.ChildNodes[0].InnerHtml.Equals("\n\t\t\t\t\t\t\t"))
+                {
+
+                }
+                else
+                {
+                    leagues.Add(node.ChildNodes[0].InnerHtml);
+                }
             }
+
+            //for (int i = 0; i< leagues.Count();i++)
+            //{
+            //    if (i % 2 != 0)
+            //    {
+            //        leagues[i].Remove();
+            //    }
+            //}
 
             foreach (HtmlNode node in doc.DocumentNode.SelectNodes("//*[@id=\"listing_wrapper\"]/div//a/div[4]"))
             {

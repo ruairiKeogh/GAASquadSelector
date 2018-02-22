@@ -11,14 +11,12 @@ namespace GAASquadSelector.Controllers
     public class SquadSelectorController : Controller
     {
         SquadContext db = new SquadContext();
-        
+
 
         // GET: SquadSelector
+        [Authorize]
         public ActionResult Index()
-        {
-            var players = from s in db.Players
-                          select s;
-            ViewBag.data = players;
+        {            
             return View();
         }
 

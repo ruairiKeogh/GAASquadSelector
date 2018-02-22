@@ -304,6 +304,7 @@
     <Content Include="Views\Fixtures\Details.cshtml" />
     <Content Include="Views\Fixtures\Edit.cshtml" />
     <Content Include="Views\Fixtures\Index.cshtml" />
+    <Content Include="Views\SquadSelector\_Players.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
