@@ -15,12 +15,15 @@ namespace GAASquadSelector.Controllers
 
         // GET: SquadSelector
         [Authorize]
-        public ActionResult Index()
-        {            
-            return View();
+        public ActionResult Index(String sortOrder)
+        {
+            SquadSelector model = new SquadSelector();
+            model.Players = db.Players.ToList();
+            model.Positions = RetrievePositions();
+            return View(model);
         }
 
-        public ActionResult ReturnPlayers(string sortOrder)
+        public List<Player> ReturnPlayers(String sortOrder)
         {
             ViewBag.FirstNameSortParm = String.IsNullOrEmpty(sortOrder) ? "first_name_desc" : "";
             ViewBag.LastNameSortParm = String.IsNullOrEmpty(sortOrder) ? "last_name_desc" : "";
@@ -43,19 +46,14 @@ namespace GAASquadSelector.Controllers
                     break;
             }
 
-            return View(players.ToList());
+            return players.ToList();
         }
         
-        public ActionResult SelectPosition(Selector selection)
+        public List<Positions> RetrievePositions()
         {
-            if (ModelState.IsValid)
-            {
-                db.Selections.Add(selection);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            return View(selection);
+            return Enum.GetValues(typeof(Positions))
+                    .Cast<Positions>()
+                    .ToList();
         }
     }
 }

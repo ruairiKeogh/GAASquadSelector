@@ -9,38 +9,49 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.ActionLink("First Name", "Index", new { sortOrder = ViewBag.FirstNameSortParm })
-        </th>
-        <th>
-            @Html.ActionLink("Last Name", "Index", new { sortOrder = ViewBag.LastNameSortParm })
-        </th>
-        <th>
-            @Html.ActionLink("Position", "Index", new { sortOrder = ViewBag.PositionSortParm })
-        </th>
-        <th></th>
-    </tr>
 
-    @foreach (var item in Model)
-    {
+<div class="col-sm-6">
+    <table class="table">
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Position)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-            </td>
+            <th>
+                @Html.ActionLink("First Name", "Index", new { sortOrder = ViewBag.FirstNameSortParm })
+            </th>
+            <th>
+                @Html.ActionLink("Last Name", "Index", new { sortOrder = ViewBag.LastNameSortParm })
+            </th>
+            <th>
+                @Html.ActionLink("Position", "Index", new { sortOrder = ViewBag.PositionSortParm })
+            </th>
+            <th></th>
         </tr>
-    }
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Position)
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+
+<div class="col-sm-3">
+    <div class="form-group">
+        @Html.LabelFor(m => m.Position)
+        @Html.DropDownListFor(m => m., 
+
+                               Model,
+
+                               "- Please select a position -",
+
+                               new { @class = "form-control" })
+    </div>
+</div>
