@@ -10,7 +10,7 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 
-<div class="col-sm-6">
+<div class="col-md-6">
     <table class="table">
         <tr>
             <th>
@@ -43,15 +43,4 @@
     </table>
 </div>
 
-<div class="col-sm-3">
-    <div class="form-group">
-        @Html.LabelFor(m => m.Position)
-        @Html.DropDownListFor(m => m., 
 
-                               Model,
-
-                               "- Please select a position -",
-
-                               new { @class = "form-control" })
-    </div>
-</div>

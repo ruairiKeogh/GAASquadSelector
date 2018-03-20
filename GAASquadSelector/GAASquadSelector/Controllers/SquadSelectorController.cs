@@ -1,5 +1,6 @@
 ﻿using GAASquadSelector.DAL;
 using GAASquadSelector.Models;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,7 @@ namespace GAASquadSelector.Controllers
         public ActionResult Index(String sortOrder)
         {
             SquadSelector model = new SquadSelector();
-            model.Players = db.Players.ToList();
+            model.Players = ReturnPlayers(sortOrder);
             model.Positions = RetrievePositions();
             return View(model);
         }
@@ -39,14 +40,17 @@ namespace GAASquadSelector.Controllers
                     players = players.OrderByDescending(p => p.LastName);
                     break;
                 case "Position":
-                    players = players.OrderBy(p => p.Position);
+                    players = players.OrderBy(p => p.Position == "Goalkeeper" ? 1 :
+                                                    p.Position == "Defender" ? 2 :
+                                                    p.Position == "Midfielder" ? 3 : 4);
                     break;
                 default:
                     players = players.OrderBy(p => p.FirstName);
                     break;
             }
+            string userId = User.Identity.GetUserId();
 
-            return players.ToList();
+            return players.Where(u => u.UserID == userId).ToList();
         }
         
         public List<Positions> RetrievePositions()

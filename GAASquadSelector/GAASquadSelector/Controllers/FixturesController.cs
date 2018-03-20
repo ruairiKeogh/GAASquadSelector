@@ -46,14 +46,6 @@ namespace GAASquadSelector.Controllers
                 }
             }
 
-            //for (int i = 0; i< leagues.Count();i++)
-            //{
-            //    if (i % 2 != 0)
-            //    {
-            //        leagues[i].Remove();
-            //    }
-            //}
-
             foreach (HtmlNode node in doc.DocumentNode.SelectNodes("//*[@id=\"listing_wrapper\"]/div//a/div[4]"))
             {
                 homeTeams.Add(node.ChildNodes[0].InnerHtml);
