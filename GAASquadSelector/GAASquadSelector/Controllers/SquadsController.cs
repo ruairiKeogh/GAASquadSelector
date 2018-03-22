@@ -47,7 +47,7 @@ namespace GAASquadSelector.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "SquadID,Name,Date")] Squad squad)
+        public ActionResult Create(Squad squad)
         {
             if (ModelState.IsValid)
             {

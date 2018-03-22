@@ -20,7 +20,6 @@ namespace GAASquadSelector.Controllers
         {
             SquadSelector model = new SquadSelector();
             model.Players = ReturnPlayers(sortOrder);
-            model.Positions = RetrievePositions();
             return View(model);
         }
 
@@ -52,12 +51,44 @@ namespace GAASquadSelector.Controllers
 
             return players.Where(u => u.UserID == userId).ToList();
         }
-        
-        public List<Positions> RetrievePositions()
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Index(SquadSelector squad)
         {
-            return Enum.GetValues(typeof(Positions))
-                    .Cast<Positions>()
-                    .ToList();
+            if (ModelState.IsValid)
+            {
+                Squad newSquad = new Squad
+                {
+                    Date = DateTime.Now,
+                    Name = squad.Name
+                };
+
+                List<Selector> selections = new List<Selector>();
+                squad.Players = ReturnPlayers("Position");
+                foreach (var player in squad.Players)
+                {
+                    if (squad.Checked == true)
+                    {
+                        Selector selector = new Selector
+                        {
+                            PlayerID = player.ID,
+                            SquadID = newSquad.SquadID,
+                            Position = squad.positions
+                        };
+                        selections.Add(selector);
+                        db.Selections.Add(selector);
+                    }
+                }
+
+                newSquad.Selections = selections;
+                
+                db.Squads.Add(newSquad);
+
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(squad);
         }
     }
 }

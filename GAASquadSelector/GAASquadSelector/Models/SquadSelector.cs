@@ -53,8 +53,11 @@ namespace GAASquadSelector.Models
     public class SquadSelector
     {
         public List<Player> Players { get; set; }
-        public List<Squad> Squads { get; set; }
+        public Squad Squads { get; set; }
         public List<Selector> Selectors { get; set; }
-        public List<Positions> Positions { get; set; }
+
+        public string Name { get; set; }
+        public bool Checked { get; set; }
+        public Positions positions { get; set; }
     }
 }
