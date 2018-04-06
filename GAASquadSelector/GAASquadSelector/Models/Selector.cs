@@ -11,7 +11,7 @@ namespace GAASquadSelector.Models
 
     public class Selector
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+       
         [Key]
         public int SelectionID { get; set; }
         public int SquadID { get; set; }

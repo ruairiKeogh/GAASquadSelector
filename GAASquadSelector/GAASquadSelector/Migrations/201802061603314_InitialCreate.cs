@@ -33,12 +33,12 @@ namespace GAASquadSelector.Migrations
                 "dbo.Selector",
                 c => new
                 {
-                    SelectorID = c.Int(nullable: false),
+                    SelectionID = c.Int(nullable: false, identity: true),
                     SquadID = c.Int(nullable: false),
                     PlayerID = c.Int(nullable: false),
                     Position = c.String(nullable: false)
                 })
-                .PrimaryKey(t => t.SelectorID)
+                .PrimaryKey(t => t.SelectionID)
             .ForeignKey("dbo.Player", t => t.PlayerID, cascadeDelete: true)
             .ForeignKey("dbo.Squad", t => t.SquadID, cascadeDelete: true)
             .Index(t => t.PlayerID)

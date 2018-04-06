@@ -11,7 +11,7 @@
 {
     <h2>Squad Selector</h2>
 
-    <div class="col-md-10">
+    <div class="col-md-9">
         <table class="table">
             <tr>
                 <th>
@@ -23,9 +23,7 @@
                 <th>
                     @Html.ActionLink("Position", "Index", new { sortOrder = ViewBag.PositionSortParm })
                 </th>
-                <th>
 
-                </th>
             </tr>
 
             @foreach (var item in Model.Players)
@@ -58,3 +56,22 @@
         </div>
     </div>
 }
+
+<div class="col-md-3">
+    <table class="table">
+        @foreach (var item in Model.Squads)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.ActionLink("View Squad", "View", new { squadID = ViewBag.SquadID })
+                </td>
+            </tr>
+        }
+    </table>
+</div>

@@ -152,3 +152,5 @@ H:\Desktop\GAApp\GAASquadSelector\GAASquadSelector\bin\HtmlAgilityPack.dll
 H:\Desktop\GAApp\GAASquadSelector\GAASquadSelector\bin\HtmlAgilityPack.pdb
 H:\Desktop\GAApp\GAASquadSelector\GAASquadSelector\bin\HtmlAgilityPack.xml
 H:\Desktop\GAApp\GAASquadSelector\GAASquadSelector\obj\Debug\GAASquadSelector.Migrations.Initial.resources
+\\COMPHOME\homedir$\X00121581\Desktop\GAApp\GAASquadSelector\GAASquadSelector\obj\Debug\GAASquadSelector.Migrations.DropSelectors.resources
+\\COMPHOME\homedir$\X00121581\Desktop\GAApp\GAASquadSelector\GAASquadSelector\obj\Debug\GAASquadSelector.Migrations.NewSelector.resources

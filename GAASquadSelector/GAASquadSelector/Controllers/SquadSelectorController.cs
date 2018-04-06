@@ -20,7 +20,15 @@ namespace GAASquadSelector.Controllers
         {
             SquadSelector model = new SquadSelector();
             model.Players = ReturnPlayers(sortOrder);
+            model.Squads = ReturnSquads();
             return View(model);
+        }
+
+        public List<Squad> ReturnSquads()
+        {
+            var squads = from s in db.Squads select s;
+            squads = squads.OrderBy(p => p.Date);
+            return squads.ToList();
         }
 
         public List<Player> ReturnPlayers(String sortOrder)
@@ -68,10 +76,13 @@ namespace GAASquadSelector.Controllers
                 squad.Players = ReturnPlayers("Position");
                 foreach (var player in squad.Players)
                 {
+                    //int num=db.Selections.Count();
+                    //num++;
                     if (squad.Checked == true)
                     {
                         Selector selector = new Selector
                         {
+                            
                             PlayerID = player.ID,
                             SquadID = newSquad.SquadID,
                             Position = squad.positions

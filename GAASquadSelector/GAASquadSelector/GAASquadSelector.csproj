@@ -213,6 +213,14 @@
     <Compile Include="Migrations\201802151321348_Initial.Designer.cs">
       <DependentUpon>201802151321348_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804041124186_DropSelectors.cs" />
+    <Compile Include="Migrations\201804041124186_DropSelectors.Designer.cs">
+      <DependentUpon>201804041124186_DropSelectors.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804061423362_NewSelector.cs" />
+    <Compile Include="Migrations\201804061423362_NewSelector.Designer.cs">
+      <DependentUpon>201804061423362_NewSelector.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Fixture.cs" />
@@ -328,6 +336,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201802151321348_Initial.resx">
       <DependentUpon>201802151321348_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804041124186_DropSelectors.resx">
+      <DependentUpon>201804041124186_DropSelectors.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804061423362_NewSelector.resx">
+      <DependentUpon>201804061423362_NewSelector.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
