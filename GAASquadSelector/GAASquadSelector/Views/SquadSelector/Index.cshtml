@@ -59,7 +59,7 @@
 
 <div class="col-md-3">
     <table class="table">
-        @foreach (var item in Model.Squads)
+        @foreach (var item in Model.Squads) // Remember to save userID against squads
             {
             <tr>
                 <td>
@@ -69,7 +69,7 @@
                     @Html.DisplayFor(modelItem => item.Date)
                 </td>
                 <td>
-                    @Html.ActionLink("View Squad", "View", new { squadID = ViewBag.SquadID })
+                    @Html.ActionLink("View Squad", "View", new { squadID = item.SquadID })
                 </td>
             </tr>
         }

@@ -9,7 +9,7 @@ namespace GAASquadSelector.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
             AutomaticMigrationDataLossAllowed = true;
             ContextKey = "GAASquadSelector.DAL.SquadContext";
         }

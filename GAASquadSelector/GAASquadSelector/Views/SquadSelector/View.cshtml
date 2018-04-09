@@ -1,4 +1,5 @@
-﻿@model IEnumerable<GAASquadSelector.Controllers.SquadSelectorController>
+﻿@model GAASquadSelector.Models.SquadSelector
+@using GAASquadSelector.Controllers
 
 @{
     ViewBag.Title = "View";
@@ -17,23 +18,27 @@
         <th>
             @Html.ActionLink("Position", "Index", new { sortOrder = ViewBag.PositionSortParm })
         </th>
-        <th></th>
+        <th>
+            
+        </th>
     </tr>
 
-    @foreach (var item in Model)
+
+
+    @foreach (var player in Model.Players)
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
+                @Html.DisplayFor(p => player.FirstName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.LastName)
+                @Html.DisplayFor(p => player.LastName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Position)
+                @Html.DisplayFor(p => player.Position)
             </td>
-            
-        </tr>
-    }
 
+        </tr>
+
+    }
 </table>

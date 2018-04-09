@@ -4,6 +4,7 @@ using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -85,7 +86,7 @@ namespace GAASquadSelector.Controllers
                             
                             PlayerID = player.ID,
                             SquadID = newSquad.SquadID,
-                            Position = squad.positions
+                            Position = squad.positions.ToString()
                         };
                         selections.Add(selector);
                         db.Selections.Add(selector);
@@ -100,6 +101,29 @@ namespace GAASquadSelector.Controllers
                 return RedirectToAction("Index");
             }
             return View(squad);
+        }
+
+        public ActionResult View(int? squadID)
+        {
+            if (squadID == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var selections = from s in db.Selections
+                          select s;
+            var selec = selections.Where(u => u.SquadID == squadID).ToList();
+
+            if (selections == null)
+            {
+                return HttpNotFound();
+            }
+            
+            var players = from s in db.Players
+                             select s;
+            var result = players.Where(p => selec.Any(p2 => p2.PlayerID == p.ID));
+
+            return View(result);
         }
     }
 }

@@ -16,7 +16,7 @@ namespace GAASquadSelector.Models
         public int SelectionID { get; set; }
         public int SquadID { get; set; }
         public int PlayerID { get; set; }
-        public Positions Position { get; set; }
+        public String Position { get; set; }
 
         public virtual Player Players { get; set; }
         public virtual Squad Squad { get; set; }
